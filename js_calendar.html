@@ -73,29 +73,29 @@
 
     <h2>Partie 2 : Générer le mois de janvier</h2>
     <script type="application/javascript">
-        let max_days = 31;
-        let current_day = 1;
-        let max_cols = 7, max_lines = 5;
-        let cpt_line = 1, cpt_col = 1;
+        // let max_days = 31;
+        // let current_day = 1;
+        // let max_cols = 7, max_lines = 5;
+        // let cpt_line = 1, cpt_col = 1;
 
-        document.write("<table>");
-        let i = 0;
-        while ( i < max_lines) {
-            document.write("<tr>");
-            let cpt_col = 0; 
-            while (cpt_col < max_cols && current_day <= max_days) {
-                document.write("<td>" + current_day + "</td>");
-                ++current_day;
-                ++cpt_col;
-            }
+        // document.write("<table>");
+        // let i = 0;
+        // while ( i < max_lines) {
+        //     document.write("<tr>");
+        //     let cpt_col = 0; 
+        //     while (cpt_col < max_cols && current_day <= max_days) {
+        //         document.write("<td>" + current_day + "</td>");
+        //         ++current_day;
+        //         ++cpt_col;
+        //     }
 
-            document.write("</tr>");
-             ++i;
-        }
-        document.write("</table>");
+        //     document.write("</tr>");
+        //      ++i;
+        // }
+        // document.write("</table>");
 
-        document.write("<table>");
-        document.write("</table>");
+        // document.write("<table>");
+        // document.write("</table>");
 
     </script>
 
@@ -103,16 +103,34 @@
 
     <h2>Partie 3 : Isoler le code dans une fonction</h2>
     <script type="application/javascript">
-        "use strict;"
-        function print_table_month(max_days_in_month, dujour = 0) {
-            console.log('partie 3', dujour)
-            const days_in_a_week = 7;
-            let current_day = 1
+        
+        function print_table_month(max_days)
+        {
+            let max_cols = 7, max_lines = 5;
+            let current_day = 1;
+            let cpt_line = 1, cpt_col = 1;
 
+            document.write("<table>");
+            let i = 0;
+            while ( i < max_lines) {
+                document.write("<tr>");
+                let cpt_col = 0; 
+                while (cpt_col < max_cols && current_day <= max_days) {
+                    document.write("<td>" + current_day + "</td>");
+                    ++current_day;
+                    ++cpt_col;
+                }
 
+                document.write("</tr>");
+                ++i;
+            }
+            document.write("</table>");
+
+            document.write("<table>");
+            document.write("</table>");
         }
 
-        print_table_month(29);
+       
     </script>
 
 
@@ -120,6 +138,12 @@
     <h2>Partie 4 : Générer les autres mois</h2>
     <script type="application/javascript">
         console.log("Début");
+        let month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let i = 0;
+        while(i<12){
+            print_table_month(month_days[i]);
+            ++i;
+        }
 
         console.log("Fin");
     </script>
