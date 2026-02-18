@@ -104,7 +104,7 @@
     <h2>Partie 3 : Isoler le code dans une fonction</h2>
     <script type="application/javascript">
         
-        function print_table_month(max_days)
+        function print_table_month(max_days, today=null)
         {
             let max_cols = 7, max_lines = 5;
             let current_day = 1;
@@ -116,7 +116,12 @@
                 document.write("<tr>");
                 let cpt_col = 0; 
                 while (cpt_col < max_cols && current_day <= max_days) {
-                    document.write("<td>" + current_day + "</td>");
+                    if(today === current_day){
+                        document.write("<td class=\"today\">" + current_day + "</td>");
+                    }
+                    else{
+                        document.write("<td>" + current_day + "</td>");
+                    }
                     ++current_day;
                     ++cpt_col;
                 }
@@ -124,9 +129,6 @@
                 document.write("</tr>");
                 ++i;
             }
-            document.write("</table>");
-
-            document.write("<table>");
             document.write("</table>");
         }
 
@@ -139,9 +141,22 @@
     <script type="application/javascript">
         console.log("Début");
         let month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let month_names = ['a','a','a','a','a','a','a','a','a','a','a','a'];
+
+        let today = new Date();                
+        let current_month = today.getMonth();
+        let current_day = today.getDate();
+
         let i = 0;
         while(i<12){
-            print_table_month(month_days[i]);
+            document.write('<h3>' + month_names[i] + '</h3>');
+            if (i == current_month){
+                console.log('on passe bien dans le if', current_month, current_day);
+                print_table_month(month_days[i], current_day);
+            }
+            else{
+                print_table_month(month_days[i]);
+            }
             ++i;
         }
 
